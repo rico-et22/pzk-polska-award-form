@@ -1,0 +1,172 @@
+{
+  "header": {
+    "title": "Application for POLSKA Award",
+    "subtitle": "Polish Amateur Radio Union",
+    "backlink": "Back to Award Rules",
+    "pdfNote": "This form generates a print-ready PDF"
+  },
+  "lang": {
+    "switchTo": "Przełącz na polski",
+    "pl": "PL",
+    "en": "EN"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "system": "System"
+  },
+  "explanations": {
+    "title": "Explanation",
+    "texts": [
+      "1. It is possible to apply for the \"POLSKA\" award in one or more categories on one application form. The same applies to applications for increasing the class of the awards already possessed, or to stickers for the awards already possessed. Joint applications, i.e. applications for new categories of the awards together with applications for increasing the class of the award(s) are also acceptable.",
+      "2. The \"POLSKA\" award is issued in 15 categories, in each category separately, i.e. on a separate application form. It is so, because the fee for the award specified in the \"General rules\" is the fee for the award in one category (for one copy). (See here: http://www.awards.pzk.org.pl/general-rules.html",
+      "3. The fee for each copy of the award is 5 EUR or 7 USD or 5 IRCs – sent with an application. The fee for stickers is 1 EUR or 1 USD or 1 IRC. This fee applies to any number of stickers on an award(s) sent in a single mail.",
+      "4. Contacts listed in specifications should be sorted firstly according to the letters marking a voivodship, and afterwards – within particular voivodships – according to the bands. The rules of GCR lists apply – compliance of a list of contacts with QSL cards confirmed by two fully licensed amateurs. It applies to any sheet of specification.",
+      "5. An application for the award(s) together with specifications of contacts should be sent to:\nAward Manager PZK\nWiesław T. Postawka - SQ9V\nP. O. Box 53\n44-280 RYDUŁTOWY\nPoland\nor\nAward Manager PZK\nPZK HQ Secretariat\nP. O. Box 54\n85-613 BYDGOSZCZ 13\nPoland"
+    ]
+  },
+  "common": {
+    "yes": "YES",
+    "no": "NO",
+    "other": "Other",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "validation": {
+    "tooSmallString": "Minimum {{min}} characters required",
+    "required": "This field is required",
+    "invalidLocator": "Invalid locator format (e.g., JO92CB)",
+    "atLeastOneContact": "At least one contact is required",
+    "invalidCallsign": "Invalid callsign",
+    "invalidEmail": "Invalid email address",
+    "invalidDate": "Invalid date",
+    "invalidTime": "Invalid time (format HH:MM)",
+    "invalidRst": "Invalid RST report",
+    "minRows": "At least 1 contact is required",
+    "selectCategory": "Select a category and award class",
+    "paymentRequired": "Select a payment amount",
+    "applyForRequired": "Please tick at least one box"
+  },
+  "application": {
+    "title": "Application Data",
+    "callsign": "Callsign",
+    "callsignPlaceholder": "e.g. SP1ABC",
+    "exCalls": "Ex calls",
+    "exCallsPlaceholder": "Previous callsigns",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "John",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Doe",
+    "address": "Mailing address",
+    "address1Placeholder": "Address Line 1",
+    "address2Placeholder": "Address Line 2",
+    "cityPlaceholder": "City",
+    "postcodePlaceholder": "Postcode",
+    "telephone": "Telephone #",
+    "telephonePlaceholder": "Phone number",
+    "email": "E-mail",
+    "emailPlaceholder": "john@example.com",
+    "issueTo": "Please issue the award to",
+    "issueTo1Placeholder": "Line 1 (first name(s), last name or name of club, etc.)",
+    "issueTo2Placeholder": "Line 2",
+    "qthLocator": "QTH Locator",
+    "qthLocatorPlaceholder": "e.g. JO92CB",
+    "ituZone": "ITU Zone",
+    "ituZonePlaceholder": "e.g. 28",
+    "cqZone": "CQ Zone",
+    "cqZonePlaceholder": "e.g. 15",
+    "category": "My application refers to:",
+    "applyForNewAward": "I am applying for issuing of a new category of the \"POLSKA\" award",
+    "applyForSticker": "I am completing QSOs, because I want to receive a sticker (an endorsement) of a higher class of the \"POLSKA\" award",
+    "previousEdition": "I already have a \"POLSKA\" award from the previous edition",
+    "pzkMember": "I am a member of the Polish Amateur Radio Union",
+    "feeAmount": "Award payment amount",
+    "spdxContestHeader": "My specification of contacts includes contacts made exclusively in one edition of the contest:",
+    "spdxContest": "- SP-DX-Contest in",
+    "spdxRttyContest": "- SP-DX-RTTY-Contest in",
+    "yearPlaceholder": "(year)",
+    "categoryNote": "Click on cell to select",
+    "gcrList": "GCR List Checked By:",
+    "gcrDesc": "Two independent operators",
+    "gcrName": "Name",
+    "gcrCallsign": "Callsign",
+    "categories": {
+      "junior": "JUNIOR",
+      "mixed": "MIXED",
+      "phone": "PHONE",
+      "cw": "CW",
+      "digi": "DIGI",
+      "160m": "160M",
+      "80m": "80M",
+      "40m": "40M",
+      "30m": "30M",
+      "20m": "20M",
+      "17m": "17M",
+      "15m": "15M",
+      "12m": "12M",
+      "10m": "10M",
+      "6m": "6M",
+      "2m": "2M"
+    },
+    "awardClasses": {
+      "new": "new award",
+      "class3": "3 - \"bronze\"",
+      "class2": "2 - \"silver\"",
+      "class1": "1 - \"gold\""
+    }
+  },
+  "recordSheet": {
+    "title": "Record Sheet",
+    "addRow": "Add Contact",
+    "editRow": "Edit",
+    "deleteRow": "Delete",
+    "deleteConfirm": "Are you sure you want to delete this contact?",
+    "noRows": "No contacts yet. Click \"Add Contact\" to get started.",
+    "rowNumber": "No.",
+    "columns": {
+      "callsign": "Callsign",
+      "date": "Date",
+      "band": "Band",
+      "mode": "Mode",
+      "voivodeship": "Mark of prov.",
+      "remarks": "Remarks"
+    },
+    "bandOptions": {
+      "160m": "160m",
+      "80m": "80m",
+      "40m": "40m",
+      "30m": "30m",
+      "20m": "20m",
+      "17m": "17m",
+      "15m": "15m",
+      "12m": "12m",
+      "10m": "10m",
+      "6m": "6m",
+      "2m": "2m",
+      "70cm": "70cm"
+    },
+    "modeOptions": {
+      "SSB": "SSB",
+      "CW": "CW",
+      "FM": "FM",
+      "DIGI": "DIGI",
+      "FT8": "FT8",
+      "FT4": "FT4",
+      "RTTY": "RTTY",
+      "PSK": "PSK",
+      "OTHER": "Other"
+    },
+    "page": "Page",
+    "of": "of"
+  },
+  "confirmation": {
+    "label": "I declare that the above information is true and I undertake to present QSL cards upon request of the PZK Award Committee.",
+    "required": "You must confirm the declaration"
+  },
+  "export": {
+    "button": "Download PDF",
+    "generating": "Generating PDF...",
+    "success": "PDF has been generated",
+    "error": "Error generating PDF"
+  }
+}

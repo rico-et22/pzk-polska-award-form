@@ -1,75 +1,47 @@
-# React + TypeScript + Vite
+# PZK POLSKA Award PDF Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React web application that completely automates the tedious process of filling out the official **"POLSKA" Award** PDF forms issued by the [PZK (Polski Związek Krótkofalowców)](http://awards.pzk.org.pl/).
 
-Currently, two official plugins are available:
+Instead of manually fighting with interactive PDF forms or filling them by hand and stitching together, ham radio operators can use this web UI to punch in their QSO contacts, select their award categories, and automatically generate a flattened, print-ready PDF containing both their Application and required Record Sheets.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Bilingual Interface**: Fully supports both Polish and English.
+- **Smart Validation**: Uses Zod to ensure callsigns, dates, and required fields are present.
+- **Auto-Pagination**: Automatically splits your log of QSO contacts into perfectly paginated, 30-row Record Sheets.
+- **Dark Mode**: Sleek, modern interface using Tailwind CSS and shadcn/ui.
+- **Instant Generation**: Fills out the PDF locally in your browser using `pdf-lib` (no server backend required), automatically giving full data protection compliance.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## PDF Quirks & Engineering
 
-Note: This will impact Vite dev & build performances.
+The original PDF forms (sourced from the official [PZK Awards website](http://awards.pzk.org.pl/)) had several technical quirks that required custom engineering to overcome:
 
-## Expanding the ESLint configuration
+1. **Chaotic Internal Field Names**:
+   The internal AcroForm fields inside the PDFs were not cleanly named (e.g. `Text7`, `CheckBox15`, `undefined.gld_mix`). To combat this without modifying the original PDFs, this application uses a **spatial extraction technique**. It grabs all fields and mathematically sorts them based on their physical X/Y coordinates (top-to-bottom, left-to-right) so it can accurately inject data into the correct visual boxes regardless of their internal names. If the PDFs are ever updated, you can use the `node scripts/extractPdfFields.mjs` utility to map the new coordinates.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2. **The "Safari Dots" Bug**:
+   Safari and Apple Preview have a notorious bug where injecting standard web fonts (like `.woff2`) into `pdf-lib` silently crashes the font renderer, leaving the entire document covered in literal dots (••••). This app works around that by fetching and embedding a native `Ubuntu-R.ttf` TrueType font specifically for the PDF generation pipeline, ensuring perfect cross-platform rendering across Chrome, Firefox, Safari, and macOS Preview.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Advanced Usage & Debugging
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Auto-Fill Form Data**: If you are actively developing and want to bypass manually typing out the form repeatedly, simply open your browser's developer console and run `localStorage.setItem('debug', 'true')`. This enables a hidden "Fill Debug Data" button above the form that instantly populates all required fields and categories.
+- **PDF Field Discovery**: The codebase includes a `scripts/extractPdfFields.mjs` script. If PZK updates their official PDF forms in the future and the field names change, simply run `node scripts/extractPdfFields.mjs path/to/new_form.pdf` to instantly extract a list of all exact X/Y spatial coordinates and AcroForm internal names.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Credits
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This application was rapidly engineered and built with the help of **Google Antigravity agents** (Claude Opus 4.6 and Gemini 3.1 Pro).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Forms and award rules are the property of the [Polski Związek Krótkofalowców (PZK)](http://awards.pzk.org.pl/).

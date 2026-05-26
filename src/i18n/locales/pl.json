@@ -1,0 +1,173 @@
+{
+  "header": {
+    "title": "Wniosek o wydanie dyplomu POLSKA",
+    "subtitle": "Polski Związek Krótkofalowców",
+    "backlink": "Powrót do regulaminu dyplomu",
+    "pdfNote": "Ten formularz wygeneruje gotowy do druku PDF"
+  },
+  "lang": {
+    "switchTo": "Switch to English",
+    "pl": "PL",
+    "en": "EN"
+  },
+  "theme": {
+    "light": "Tryb jasny",
+    "dark": "Tryb ciemny",
+    "system": "Systemowy"
+  },
+  "common": {
+    "yes": "TAK",
+    "no": "NIE",
+    "other": "Inne",
+    "cancel": "Anuluj",
+    "save": "Zapisz"
+  },
+  "explanations": {
+    "title": "Objaśnienia",
+    "texts": [
+      "1) Na jednym egzemplarzu aplikacji (zgłoszenia) można składać wniosek o wydanie dyplomu „POLSKA” w jednej lub w kilku kategoriach. To samo dotyczy zgłoszeń o podniesienie klasy (czyli nalepek) już posiadanych dyplomów. Aplikacje łączone, tzn. o nowe kategorie dyplomów razem z wnioskami o podniesienie klasy dyplomu(-ów) są również dopuszczalne. Proszę uważnie wypełnić powyższą tabelkę.",
+      "2) Dyplom „POLSKA” jest wydawany w 16 kategoriach - w każdej kategorii oddzielnie, tzn. oddzielny egzemplarz. Wynika z tego to, że opłata za dyplom jest opłatą za dyplom jednej kategorii (za każdy egzemplarz oddzielnie). Patrz opłaty za dyplomy PZK podane w „Ogólnych zasadach wydawania dyplomów PZK” - http://www.awards.pzk.org.pl/zasady-ogolne.html",
+      "3) Opłata za każdy egzemplarz dyplomu wynosi dla członków PZK 10 PLN, w tym dla operatorów stacji zagranicznych będących członkami PZK. Dla stacji polskich nie zrzeszonych w PZK - 20 PLN. Opłata za dyplom w kategorii „JUNIOR” dla wszystkich operatorów wynosi 10 PLN.",
+      "4) Nalepki za dyplom są darmowe, jeśli są wysyłane razem z dyplomem. Jeśli nalepki są wysyłane oddzielnie, wraz ze zgłoszeniem należy przesłać znaczek pocztowy na list zwykły (2,60 PLN) na pokrycie kosztów wysyłki nalepek.",
+      "5) Opłat za dyplomy należy dokonywać na konto ZG PZK, skr. poczt. 54, 85-613 Bydgoszcz 13 - nr 61 1140 1010 0000 3533 4800 1001. Kserokopię dowodu wpłaty należy dołączyć do zgłoszenia.",
+      "6) Lista łączności potrzebnych do otrzymania dyplomu powinna być uporządkowana najpierw wg oznaczeń województw, a następnie – w ramach województw - wg pasm. Poza zgłoszeniem na dyplom w kat. „JUNIOR” obowiązuje zasada listy GCR - potwierdzenie podpisami zgodności każdego arkusza listy QSO z kartami QSL przez 2-ch nadawców. W kategorii „JUNIOR” listę QSO potwierdza prezes klubu.",
+      "7) Kompletne zgłoszenie na dyplom wraz z kserokopią dowodu wpłaty (przelewu) należy przesłać na adres: Award Manager PZK, Wiesław T. Postawka - SQ9V, skr. poczt. 53, 44-280 RYDUŁTOWY"
+    ]
+  },
+  "validation": {
+    "required": "To pole jest wymagane",
+    "invalidCallsign": "Nieprawidłowy znak wywoławczy",
+    "invalidEmail": "Nieprawidłowy adres e-mail",
+    "invalidDate": "Nieprawidłowa data",
+    "invalidTime": "Nieprawidłowy czas (format HH:MM)",
+    "invalidRst": "Nieprawidłowy raport RST",
+    "invalidLocator": "Nieprawidłowy lokator",
+    "minRows": "Wymagana jest co najmniej 1 łączność",
+    "selectCategory": "Wybierz kategorię i klasę dyplomu",
+    "paymentRequired": "Podaj kwotę wpłaty",
+    "applyForRequired": "Zaznacz co najmniej jedno pole",
+    "tooSmallString": "Wymagane minimum {{min}} znaki"
+  },
+  "application": {
+    "title": "Dane aplikacyjne",
+    "callsign": "Znak wywoławczy",
+    "callsignPlaceholder": "np. SP1ABC",
+    "exCalls": "Poprzednie znaki wywoławcze",
+    "exCallsPlaceholder": "Poprzednie znaki",
+    "firstName": "Imię",
+    "firstNamePlaceholder": "Jan",
+    "lastName": "Nazwisko",
+    "lastNamePlaceholder": "Kowalski",
+    "address": "Adres pocztowy",
+    "address1Placeholder": "Ulica i nr domu",
+    "address2Placeholder": "Adres c.d.",
+    "cityPlaceholder": "Miejscowość",
+    "postcodePlaceholder": "XX-XXX",
+    "telephone": "Telefon",
+    "telephonePlaceholder": "np. +48 123 456 789",
+    "email": "Adres e-mail",
+    "emailPlaceholder": "jan@example.com",
+    "issueTo": "Dyplom proszę wystawić dla",
+    "issueTo1Placeholder": "Linia 1 (imię, nazwisko, nazwa klubu itp.)",
+    "issueTo2Placeholder": "Linia 2",
+    "qthLocator": "Twój QTH Lokator",
+    "qthLocatorPlaceholder": "np. JO92CB",
+    "ituZone": "Strefa ITU",
+    "ituZonePlaceholder": "np. 28",
+    "cqZone": "Strefa CQ",
+    "cqZonePlaceholder": "np. 15",
+    "category": "Niniejszym:",
+    "applyForNewAward": "Występuję o wydanie nowej kategorii dyplomu \"POLSKA\"",
+    "applyForSticker": "Zgłaszam brakujące łączności ponieważ chcę otrzymać nalepkę potwierdzającą podwyższenie klasy dyplomu \"POLSKA\"",
+    "previousEdition": "Posiadam już dyplom \"POLSKA\" z poprzedniej edycji",
+    "categoryNote": "według zakreśleń w poniższej tabeli (kliknij komórkę, aby wybrać):",
+    "gcrList": "Zgodność z posiadanymi kartami QSL potwierdzili:",
+    "gcrDesc": "Podpisy 2 nadawców (w kat. JUNIOR - prezes klubu)",
+    "gcrName": "Imię i nazwisko",
+    "gcrCallsign": "Znak",
+    "pzkMember": "W chwili obecnej jestem członkiem Polskiego Związku Krótkofalowców i mam opłacone składki członkowskie (proszę zaznaczyć odpowiedź):",
+    "feeAmount": "Należność za dyplom(-y) w kwocie (PLN)",
+    "spdxContestHeader": "Moje zestawienie kontaktów obejmuje łączności przeprowadzone wyłącznie w jednej edycji zawodów:",
+    "spdxContest": "- SP-DX-Contest w",
+    "spdxRttyContest": "- SP-DX-RTTY-Contest w",
+    "yearPlaceholder": "(rok)",
+    "categories": {
+      "junior": "JUNIOR",
+      "mixed": "MIXED",
+      "phone": "PHONE",
+      "cw": "CW",
+      "digi": "DIGI",
+      "160m": "160M",
+      "80m": "80M",
+      "40m": "40M",
+      "30m": "30M",
+      "20m": "20M",
+      "17m": "17M",
+      "15m": "15M",
+      "12m": "12M",
+      "10m": "10M",
+      "6m": "6M",
+      "2m": "2M"
+    },
+    "awardClasses": {
+      "new": "nowego dyplomu",
+      "class3": "3 - „brązowa”",
+      "class2": "2 - „srebrna”",
+      "class1": "1 - „złota”"
+    }
+  },
+  "recordSheet": {
+    "title": "Wykaz łączności (Record Sheet)",
+    "addRow": "Dodaj łączność",
+    "editRow": "Edytuj",
+    "deleteRow": "Usuń",
+    "deleteConfirm": "Czy na pewno chcesz usunąć tę łączność?",
+    "noRows": "Brak łączności. Kliknij \"Dodaj łączność\" aby rozpocząć.",
+    "rowNumber": "Nr",
+    "columns": {
+      "callsign": "Znak",
+      "date": "Data",
+      "band": "Pasmo",
+      "mode": "Emisja",
+      "voivodeship": "Oznacz. woj.",
+      "remarks": "Uwagi"
+    },
+    "bandOptions": {
+      "160m": "160m",
+      "80m": "80m",
+      "40m": "40m",
+      "30m": "30m",
+      "20m": "20m",
+      "17m": "17m",
+      "15m": "15m",
+      "12m": "12m",
+      "10m": "10m",
+      "6m": "6m",
+      "2m": "2m",
+      "70cm": "70cm"
+    },
+    "modeOptions": {
+      "SSB": "SSB",
+      "CW": "CW",
+      "FM": "FM",
+      "DIGI": "DIGI",
+      "FT8": "FT8",
+      "FT4": "FT4",
+      "RTTY": "RTTY",
+      "PSK": "PSK",
+      "OTHER": "Inne"
+    },
+    "page": "Strona",
+    "of": "z"
+  },
+  "confirmation": {
+    "label": "Oświadczam, że powyższe dane są zgodne z prawdą i zobowiązuję się do okazania kart QSL na żądanie Komisji Dyplomowej PZK.",
+    "required": "Musisz potwierdzić oświadczenie"
+  },
+  "export": {
+    "button": "Pobierz PDF",
+    "generating": "Generowanie PDF...",
+    "success": "PDF został wygenerowany",
+    "error": "Błąd podczas generowania PDF"
+  }
+}
