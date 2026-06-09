@@ -140,7 +140,7 @@ async function loadFont(): Promise<ArrayBuffer> {
 function getSortedTextFields(form: PDFForm): PDFTextField[] {
   const fields = form
     .getFields()
-    .filter((f) => f.constructor.name === "PDFTextField");
+    .filter((f): f is PDFTextField => f instanceof PDFTextField);
 
   const data = fields.map((f) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -170,7 +170,7 @@ function getSortedTextFields(form: PDFForm): PDFTextField[] {
 function getSortedCheckBoxes(form: PDFForm): PDFCheckBox[] {
   const fields = form
     .getFields()
-    .filter((f) => f.constructor.name === "PDFCheckBox") as PDFCheckBox[];
+    .filter((f): f is PDFCheckBox => f instanceof PDFCheckBox);
   return fields.sort((a, b) => {
     const wA = a.acroField.getWidgets()[0];
     const wB = b.acroField.getWidgets()[0];
