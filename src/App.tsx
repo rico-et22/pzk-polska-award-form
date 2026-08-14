@@ -21,6 +21,7 @@ import {
   type ApplicationFormData,
 } from '@/schemas/applicationSchema'
 import { generatePdf, downloadBlob } from '@/lib/pdf/generatePdf'
+import { sortQsoContacts } from '@/lib/importers/qsoSorter'
 
 function App() {
   const { t, i18n } = useTranslation()
@@ -76,8 +77,13 @@ function App() {
     setIsGenerating(true)
     setPdfStatus('idle')
     try {
+      // Auto-sort contacts in form state and update table UI
+      const sortedContacts = sortQsoContacts(data.contacts)
+      form.setValue('contacts', sortedContacts, { shouldDirty: true })
+      const updatedData = { ...data, contacts: sortedContacts }
+
       const locale = i18n.language?.startsWith('pl') ? 'pl' : 'en'
-      const pdfBytes = await generatePdf(data, locale as 'pl' | 'en')
+      const pdfBytes = await generatePdf(updatedData, locale as 'pl' | 'en')
       const filename = `Polska_Award_${data.callsign}_${new Date().toISOString().slice(0, 10)}.pdf`
       downloadBlob(pdfBytes, filename)
       setPdfStatus('success')

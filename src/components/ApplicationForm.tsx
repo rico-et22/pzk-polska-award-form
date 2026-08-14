@@ -490,7 +490,7 @@ export function ApplicationForm() {
                   name="gcr1Name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t('application.gcrName')} 1 <RequiredStar /></FormLabel>
+                      <FormLabel>{t('application.gcrName')} 1</FormLabel>
                       <FormControl><Input {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
@@ -501,7 +501,7 @@ export function ApplicationForm() {
                   name="gcr1Callsign"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t('application.gcrCallsign')} 1 <RequiredStar /></FormLabel>
+                      <FormLabel>{t('application.gcrCallsign')} 1</FormLabel>
                       <FormControl><Input className="uppercase" {...field} onChange={(e) => field.onChange(e.target.value.toUpperCase())} /></FormControl>
                       <FormMessage />
                     </FormItem>
@@ -514,7 +514,7 @@ export function ApplicationForm() {
                   name="gcr2Name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t('application.gcrName')} 2 <RequiredStar /></FormLabel>
+                      <FormLabel>{t('application.gcrName')} 2</FormLabel>
                       <FormControl><Input {...field} /></FormControl>
                       <FormMessage />
                     </FormItem>
@@ -525,7 +525,7 @@ export function ApplicationForm() {
                   name="gcr2Callsign"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t('application.gcrCallsign')} 2 <RequiredStar /></FormLabel>
+                      <FormLabel>{t('application.gcrCallsign')} 2</FormLabel>
                       <FormControl><Input className="uppercase" {...field} onChange={(e) => field.onChange(e.target.value.toUpperCase())} /></FormControl>
                       <FormMessage />
                     </FormItem>

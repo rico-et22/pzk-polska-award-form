@@ -7,10 +7,13 @@ Instead of manually fighting with interactive PDF forms or filling them by hand 
 ## Features
 
 - **Bilingual Interface**: Fully supports both Polish and English.
-- **Smart Validation**: Uses Zod to ensure callsigns, dates, and required fields are present.
-- **Auto-Pagination**: Automatically splits your log of QSO contacts into perfectly paginated, 30-row Record Sheets.
+- **Standardized ADIF Import**: Drag-and-drop or upload `.adi`/`.adif` logs from any logging software (Log4OM, RUMlogNG, N1MM, Wavelog, Cloudlog, WSJT-X, etc.) with automatic parsing for calls, dates, bands/frequencies, modes/submodes, and voivodeships. Allows 1-click voivodeship code assignment directly in the table row for imported records not having one.
+- **Rule 6 Auto-Sorting**: Automatically sorts all QSO contacts according to PZK Polska Award Rule 6 (first by Voivodeship, then within voivodeship by Band, then by Date) both in the UI and during PDF generation.
+- **Optional GCR Signatures**: Leave signature fields empty on the web form so you can print the document and collect physical pen signatures at your local club or branch.
+- **Smart Validation**: Uses Zod to ensure callsigns, dates, and required fields are valid.
+- **Auto-Pagination**: Automatically splits your log of QSO contacts into perfectly paginated, 30-row Record Sheets matching the official forms.
 - **Dark Mode**: Sleek, modern interface using Tailwind CSS and shadcn/ui.
-- **Instant Generation**: Fills out the PDF locally in your browser using `pdf-lib` (no server backend required), automatically giving full data protection compliance.
+- **Instant Generation**: Fills out the PDF locally in your browser using `pdf-lib` (no server backend required), giving full data privacy compliance.
 
 ## PDF Quirks & Engineering
 
@@ -21,6 +24,9 @@ The original PDF forms (sourced from the official [PZK Awards website](http://aw
 
 2. **The "Safari Dots" Bug**:
    Safari and Apple Preview have a notorious bug where injecting standard web fonts (like `.woff2`) into `pdf-lib` silently crashes the font renderer, leaving the entire document covered in literal dots (••••). This app works around that by fetching and embedding a native `Ubuntu-R.ttf` TrueType font specifically for the PDF generation pipeline, ensuring perfect cross-platform rendering across Chrome, Firefox, Safari, and macOS Preview.
+
+3. **PZK Rule 6 Contact Ordering**:
+   PZK regulations require that contacts are sorted first by voivodeship markings, and then by bands within each voivodeship. To prevent award rejections due to unordered logs, the generation pipeline automatically enforces this multi-level sort (`Voivodeship -> Band -> Date -> Callsign`) before chunking contacts into Record Sheets, regardless of how they were entered or imported.
 
 ## Advanced Usage & Debugging
 
@@ -45,3 +51,5 @@ pnpm build
 This application was rapidly engineered and built with the help of **Google Antigravity agents** (Claude Opus 4.6 and Gemini 3.1 Pro).
 
 Forms and award rules are the property of the [Polski Związek Krótkofalowców (PZK)](http://awards.pzk.org.pl/).
+
+Shoutout to Jacek SP2TQQ for suggesting the ADIF import feature.

@@ -1,7 +1,8 @@
 import { PDFDocument, PDFTextField, PDFCheckBox, PDFForm } from "pdf-lib";
 import type fontkit from "@pdf-lib/fontkit";
-import type { ApplicationFormData } from "@/schemas/applicationSchema";
-import { PL_CHECKBOX_MAP, EN_CHECKBOX_MAP } from "./checkboxMaps";
+import type { ApplicationFormData } from "../../schemas/applicationSchema.ts";
+import { sortQsoContacts } from "../importers/qsoSorter.ts";
+import { PL_CHECKBOX_MAP, EN_CHECKBOX_MAP } from "./checkboxMaps.ts";
 
 const ROWS_PER_PAGE = 30;
 
@@ -41,12 +42,13 @@ export async function generatePdf(
     console.warn("Could not flatten application form", err);
   }
 
-  // --- Fill record sheets (one per 30 rows) ---
+  // --- Fill record sheets (one per 30 rows, auto-sorted by Voivodeship and Band per PZK Rule 6) ---
+  const sortedContacts = sortQsoContacts(data.contacts);
   const filledRecordPages: Uint8Array[] = [];
-  const totalPages = Math.ceil(data.contacts.length / ROWS_PER_PAGE);
+  const totalPages = Math.ceil(sortedContacts.length / ROWS_PER_PAGE);
 
   for (let page = 0; page < totalPages; page++) {
-    const pageContacts = data.contacts.slice(
+    const pageContacts = sortedContacts.slice(
       page * ROWS_PER_PAGE,
       (page + 1) * ROWS_PER_PAGE,
     );
@@ -107,21 +109,21 @@ async function loadTemplate(
   const urls: Record<string, Record<string, string>> = {
     pl: {
       application: new URL(
-        "@/assets/forms/pl/Aplikacja_do_dyplomu_POLSKA_v3_int.pdf",
+        "../../assets/forms/pl/Aplikacja_do_dyplomu_POLSKA_v3_int.pdf",
         import.meta.url,
       ).href,
       recordSheet: new URL(
-        "@/assets/forms/shared/Record_sheet_POLSKA_int.pdf",
+        "../../assets/forms/shared/Record_sheet_POLSKA_int.pdf",
         import.meta.url,
       ).href,
     },
     en: {
       application: new URL(
-        "@/assets/forms/en/Application_for_POLSKA_Award_int.pdf",
+        "../../assets/forms/en/Application_for_POLSKA_Award_int.pdf",
         import.meta.url,
       ).href,
       recordSheet: new URL(
-        "@/assets/forms/shared/Record_sheet_POLSKA_int.pdf",
+        "../../assets/forms/shared/Record_sheet_POLSKA_int.pdf",
         import.meta.url,
       ).href,
     },
