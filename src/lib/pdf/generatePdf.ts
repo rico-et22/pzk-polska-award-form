@@ -1,4 +1,4 @@
-import { PDFDocument, PDFTextField, PDFCheckBox, PDFForm } from "pdf-lib";
+import { PDFDocument, PDFTextField, PDFForm } from "pdf-lib";
 import type fontkit from "@pdf-lib/fontkit";
 import type { ApplicationFormData } from "../../schemas/applicationSchema.ts";
 import { sortQsoContacts } from "../importers/qsoSorter.ts";
@@ -169,21 +169,6 @@ function getSortedTextFields(form: PDFForm): PDFTextField[] {
   return data.map((d) => d.field);
 }
 
-function getSortedCheckBoxes(form: PDFForm): PDFCheckBox[] {
-  const fields = form
-    .getFields()
-    .filter((f): f is PDFCheckBox => f instanceof PDFCheckBox);
-  return fields.sort((a, b) => {
-    const wA = a.acroField.getWidgets()[0];
-    const wB = b.acroField.getWidgets()[0];
-    const rectA = wA.getRectangle();
-    const rectB = wB.getRectangle();
-    if (Math.abs(rectB.y - rectA.y) > 5) {
-      return rectB.y - rectA.y; // Descending Y
-    }
-    return rectA.x - rectB.x; // Ascending X
-  });
-}
 
 function fillApplicationFields(
   form: PDFForm,
@@ -191,7 +176,6 @@ function fillApplicationFields(
   locale: "pl" | "en",
 ) {
   const tf = getSortedTextFields(form);
-  const cb = getSortedCheckBoxes(form);
 
   const setSafe = (idx: number, val: string) => {
     if (idx < tf.length && val) {
@@ -231,11 +215,14 @@ function fillApplicationFields(
     } catch (err) {}
 
     // PZK Member
-    const bottomCbs = cb.slice(-3);
-    if (data.pzkMember === "yes" && bottomCbs[2]) {
-      bottomCbs[2].check();
-    } else if (data.pzkMember === "no" && bottomCbs[1]) {
-      bottomCbs[1].check();
+    try {
+      if (data.pzkMember === "yes") {
+        form.getCheckBox("PZK_tak").check();
+      } else if (data.pzkMember === "no") {
+        form.getCheckBox("PZK_nie").check();
+      }
+    } catch (err) {
+      console.warn("Failed to set PZK member checkbox:", err);
     }
     setSafe(16, data.feeAmount || "");
 
@@ -355,8 +342,13 @@ function fillApplicationFields(
     } catch (err) {}
 
     // PZK Member
-    const bottomCbs = cb.slice(-4);
-    if (data.pzkMember === "yes" && bottomCbs[1]) bottomCbs[1].check();
+    try {
+      if (data.pzkMember === "yes") {
+        form.getCheckBox("PZK_memb").check();
+      }
+    } catch (err) {
+      console.warn("Failed to set EN PZK member checkbox:", err);
+    }
 
     // Payment Fields
     try {
