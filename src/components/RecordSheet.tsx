@@ -112,8 +112,10 @@ export function RecordSheet() {
   }
 
   const handleSort = () => {
-    const sorted = sortQsoContacts(fields as QsoRow[])
+    const currentContacts = form.getValues('contacts') || (fields as QsoRow[])
+    const sorted = sortQsoContacts(currentContacts)
     replace(sorted)
+    form.setValue('contacts', sorted, { shouldDirty: true })
   }
 
   const handleClearAll = () => {

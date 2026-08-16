@@ -7,14 +7,14 @@ BANDS.forEach((band, index) => {
 
 /**
  * Sorts QSO contacts according to PZK Polska Award Rule 6:
- * 1. Firstly by Voivodeship code (alphabetical, unassigned at the end)
- * 2. Secondly by Band (160m -> 80m -> 40m -> ... -> 70cm)
- * 3. Thirdly by Date (ascending)
- * 4. Fourthly by Callsign (alphabetical)
+ * 1. Firstly by Voivodeship code (alphabetical: B, C, D, F, G, J, K, L, M, O, P, R, S, U, W, Z, unassigned at the end)
+ * 2. Secondly by Band (160m -> 80m -> 40m -> 30m -> 20m -> 17m -> 15m -> 12m -> 10m -> 6m -> 2m -> 70cm)
+ * 3. Thirdly by Callsign (alphabetical)
+ * 4. Fourthly by Date (chronological)
  */
 export function sortQsoContacts(contacts: QsoRow[]): QsoRow[] {
   return [...contacts].sort((a, b) => {
-    // 1. Voivodeship
+    // 1. Voivodeship code
     const voyA = (a.voivodeship || "").trim().toUpperCase();
     const voyB = (b.voivodeship || "").trim().toUpperCase();
 
@@ -31,12 +31,14 @@ export function sortQsoContacts(contacts: QsoRow[]): QsoRow[] {
       return bandRankA - bandRankB;
     }
 
-    // 3. Date
-    if (a.date !== b.date) {
-      return (a.date || "").localeCompare(b.date || "");
+    // 3. Callsign
+    const callA = (a.callsign || "").trim().toUpperCase();
+    const callB = (b.callsign || "").trim().toUpperCase();
+    if (callA !== callB) {
+      return callA.localeCompare(callB);
     }
 
-    // 4. Callsign
-    return (a.callsign || "").localeCompare(b.callsign || "");
+    // 4. Date
+    return (a.date || "").localeCompare(b.date || "");
   });
 }
