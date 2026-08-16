@@ -1,4 +1,8 @@
-import { type QsoRow, qsoRowSchema } from "../../schemas/applicationSchema.ts";
+import {
+  type QsoRow,
+  qsoRowSchema,
+  isPolishCallsign,
+} from "../../schemas/applicationSchema.ts";
 import {
   normalizeBand,
   normalizeMode,
@@ -15,7 +19,7 @@ export interface AdifParseResult {
 }
 
 /**
- * Parses ADIF text into validated QsoRow items.
+ * Parses ADIF text into validated QsoRow items, strictly accepting Polish stations (SP, SQ, SO, SN, 3Z, HF, SR).
  */
 export function parseAdif(adifContent: string): AdifParseResult {
   const result: AdifParseResult = {
@@ -134,12 +138,20 @@ export function parseAdif(adifContent: string): AdifParseResult {
       result.validCount++;
     } else {
       result.skippedCount++;
-      if (cleanCall || cleanDate) {
+      if (result.errors.length < 100 && (cleanCall || cleanDate)) {
+        const isNonPolish = cleanCall && !isPolishCallsign(cleanCall);
+        const reason = isNonPolish
+          ? "Niepolski znak / Non-Polish callsign (SP/SQ/SO/SN/3Z/HF/SR required)"
+          : validation.error.issues.map((i) => i.message).join(", ");
         result.errors.push(
-          `Record #${result.totalParsed} (${cleanCall || "unknown call"}, ${cleanDate || "no date"}): ${validation.error.issues.map((i) => i.message).join(", ")}`
+          `#${result.totalParsed} (${cleanCall || "unknown call"}, ${cleanDate || "no date"}): ${reason}`
         );
       }
     }
+  }
+
+  if (result.skippedCount > result.errors.length) {
+    result.errors.push(`... oraz ${result.skippedCount - result.errors.length} innych pominiętych rekordów`);
   }
 
   return result;

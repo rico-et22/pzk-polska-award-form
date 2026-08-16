@@ -38,6 +38,8 @@
     "invalidLocator": "Invalid locator format (e.g., JO92CB)",
     "atLeastOneContact": "At least one contact is required",
     "invalidCallsign": "Invalid callsign",
+    "invalidPolishCallsign": "Polish callsign required (SP, SQ, SO, SN, 3Z, HF, SR)",
+    "polishCallsignRequired": "Enter a Polish callsign (SP, SQ, SO, SN, 3Z, HF, SR)",
     "invalidEmail": "Invalid email address",
     "invalidDate": "Invalid date",
     "invalidTime": "Invalid time (format HH:MM)",

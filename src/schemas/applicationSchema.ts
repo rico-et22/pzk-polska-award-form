@@ -67,8 +67,16 @@ export const CATEGORIES = [
 ] as const;
 export const AWARD_CLASSES = ["new", "class3", "class2", "class1"] as const;
 
+export const POLISH_CALLSIGN_REGEX =
+  /^(?:(?:SP|SQ|SO|SN|3Z|HF|SR)[0-9][A-Z0-9]*(?:\/[A-Z0-9]+)*|(?:SP|SQ|SO|SN|3Z|HF|SR)(?:[0-9])?\/[A-Z0-9]+(?:\/[A-Z0-9]+)*)$/i;
+
+export function isPolishCallsign(callsign: string): boolean {
+  if (!callsign) return false;
+  return POLISH_CALLSIGN_REGEX.test(callsign.trim());
+}
+
 export const qsoRowSchema = z.object({
-  callsign: z.string().regex(/^[A-Za-z0-9/]+$/, "invalidCallsign"),
+  callsign: z.string().regex(POLISH_CALLSIGN_REGEX, "invalidPolishCallsign"),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "invalidDate"),
   band: z.enum(BANDS),
   mode: z.enum(MODES),

@@ -44,8 +44,9 @@ import {
   BANDS,
   MODES,
   VOIVODESHIPS,
-  type ApplicationFormData,
+  isPolishCallsign,
   type QsoRow,
+  type ApplicationFormData,
 } from '@/schemas/applicationSchema'
 import { ImportQsoDialog } from './ImportQsoDialog'
 import { sortQsoContacts } from '@/lib/importers/qsoSorter'
@@ -412,6 +413,11 @@ export function RecordSheet() {
                   className="uppercase font-mono"
                   placeholder="SP1ABC"
                 />
+                {editData.callsign.trim() && !isPolishCallsign(editData.callsign) && (
+                  <p className="text-xs text-destructive font-medium">
+                    {t('validation.invalidPolishCallsign')}
+                  </p>
+                )}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="qso-date">{t('recordSheet.columns.date')}</Label>
@@ -497,7 +503,7 @@ export function RecordSheet() {
             <Button
               type="button"
               onClick={handleSave}
-              disabled={!editData.callsign || !editData.date}
+              disabled={!editData.callsign || !editData.date || !isPolishCallsign(editData.callsign)}
             >
               {editIndex !== null ? t('recordSheet.editRow') : t('recordSheet.addRow')}
             </Button>

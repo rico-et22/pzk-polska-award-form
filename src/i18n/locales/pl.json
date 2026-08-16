@@ -37,6 +37,8 @@
   "validation": {
     "required": "To pole jest wymagane",
     "invalidCallsign": "Nieprawidłowy znak wywoławczy",
+    "invalidPolishCallsign": "Wymagany polski znak wywoławczy (SP, SQ, SO, SN, 3Z, HF, SR)",
+    "polishCallsignRequired": "Wprowadź polski znak (SP, SQ, SO, SN, 3Z, HF, SR)",
     "invalidEmail": "Nieprawidłowy adres e-mail",
     "invalidDate": "Nieprawidłowa data",
     "invalidTime": "Nieprawidłowy czas (format HH:MM)",
