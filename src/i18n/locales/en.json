@@ -120,7 +120,7 @@
   "recordSheet": {
     "title": "Record Sheet",
     "addRow": "Add Contact",
-    "editRow": "Edit",
+    "editRow": "Edit Contact",
     "deleteRow": "Delete",
     "deleteConfirm": "Are you sure you want to delete this contact?",
     "noRows": "No contacts yet. Click \"Add Contact\" or import an ADIF file to get started.",

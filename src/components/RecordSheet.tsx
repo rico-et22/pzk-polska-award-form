@@ -507,7 +507,7 @@ export function RecordSheet() {
               onClick={handleSave}
               disabled={!editData.callsign || !editData.date || !isPolishCallsign(editData.callsign)}
             >
-              {editIndex !== null ? t('recordSheet.editRow') : t('recordSheet.addRow')}
+              {editIndex !== null ? t('common.save') : t('recordSheet.addRow')}
             </Button>
           </DialogFooter>
         </DialogContent>

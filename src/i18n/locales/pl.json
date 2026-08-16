@@ -121,7 +121,7 @@
   "recordSheet": {
     "title": "Wykaz łączności (Record Sheet)",
     "addRow": "Dodaj łączność",
-    "editRow": "Edytuj",
+    "editRow": "Edytuj łączność",
     "deleteRow": "Usuń",
     "deleteConfirm": "Czy na pewno chcesz usunąć tę łączność?",
     "noRows": "Brak łączności. Kliknij \"Dodaj łączność\" lub zaimportuj plik ADIF, aby rozpocząć.",
